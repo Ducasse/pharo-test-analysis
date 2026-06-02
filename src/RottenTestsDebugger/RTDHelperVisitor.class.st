@@ -63,6 +63,11 @@ RTDHelperVisitor >> initialize [
 	helpers := RTDHelpers new
 ]
 
+{ #category : 'accessing' }
+RTDHelperVisitor >> messages [
+	^ messageVisitor messages
+]
+
 { #category : 'private' }
 RTDHelperVisitor >> selectMethodHelpers: aCompiledMethod [
 
