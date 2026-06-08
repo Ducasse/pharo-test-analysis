@@ -20,18 +20,20 @@ TSDLiteralPollutionDetector >> detects [
 { #category : 'testing' }
 TSDLiteralPollutionDetector >> hasLiteralPollution [
 	| literalsCount |
-	literalsCount := self compiledMethod ast statements size > 0 ifTrue: [ 
-		(self compiledMethod ast allChildren select: [ :node | 
-			node isLiteralNode and: [ 
-				node value isNumber or: [ 
-				node value isString and: [ 
-				node value isSymbol not ] ] ] ]) size ] ifFalse: [ 0 ].
+	literalsCount := self compiledMethod ast statements isNotEmpty
+		ifTrue: [ 
+			self compiledMethod ast allChildren count: [ :node | 
+				node isLiteralNode and: [ 
+					node value isNumber or: [ 
+					node value isString and: [ 
+					node value isSymbol not ] ] ] ] ]
+		ifFalse: [ 0 ].
 	^ literalsCount > self maxLiterals
 ]
 
 { #category : 'accessing' }
 TSDLiteralPollutionDetector >> maxLiterals [
-	^ 3 "Si tiene más de 3 números/strings sueltos, se considera contaminado"
+	^ 3 "If it has more than 3 literal numbers or strings, it is considered polluted"
 ]
 
 { #category : 'accessing' }
