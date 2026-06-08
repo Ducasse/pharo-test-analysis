@@ -11,18 +11,18 @@ Class {
 { #category : 'converting' }
 TSDMagicLiteralResult >> asResultForDrTest [
 
-	| tmp2 |
-	tmp2 := DTFTFMessageNode new.
-	tmp2
-		message: (String streamContents: [ :arg1 |
-						 arg1
-							 print: (self testClass selector: self selector);
-							 << ': ';
-							 << (self hasMagicLiterals
-									  ifTrue: [ 'has magic literals' ]
-									  ifFalse: [ 'no magic literals' ]) ]);
+	| messageNode |
+	messageNode := DTFTFMessageNode new.
+	messageNode
+		message: (String streamContents: [ :stream |
+			stream
+				print: (self testClass selector: self selector);
+				<< ': ';
+				<< (self hasMagicLiterals
+					ifTrue: [ 'has magic literals' ]
+					ifFalse: [ 'no magic literals' ]) ]);
 		browseMethod: (self testClass lookupSelector: self selector).
-	^ tmp2 yourself
+	^ messageNode yourself
 ]
 
 { #category : 'accessing' }
