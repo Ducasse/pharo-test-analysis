@@ -9,5 +9,5 @@ Class {
 TSDMagicLiteralFakeTest >> testWithMagicLiteral [
 	| resultado |
 	resultado := 10 + 20.
-	self assert: resultado equals: 30. "El 30, el 10 y el 20 acá son números mágicos"
+	self assert: resultado equals: 30. "10, 20, and 30 are magic numbers here"
 ]
