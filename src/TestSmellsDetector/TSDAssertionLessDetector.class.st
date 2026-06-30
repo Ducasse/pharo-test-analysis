@@ -33,6 +33,7 @@ TSDAssertionLessDetector >> detects [
 { #category : 'testing' }
 TSDAssertionLessDetector >> hasNoAssertionSelectors [
 
+"condition seems to always be false"
 	^ self methodVisitor helperSelectors allSatisfy: [ :aHelperSelector | 
 				(self methodVisitor helperSelectors includes: aHelperSelector) not ]
 ]

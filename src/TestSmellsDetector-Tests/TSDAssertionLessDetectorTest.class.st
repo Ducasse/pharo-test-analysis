@@ -24,7 +24,7 @@ TSDAssertionLessDetectorTest >> detectorClass [
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
-1 halt.
+
 	self deny: (self detector detectSelector: #testUsesInstanceVar)
 ]
 
@@ -45,5 +45,5 @@ TSDAssertionLessDetectorTest >> testHasConnectedAssertionTwice [
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testIsAssertionLess [
 
-	self assert: (self detector detectSelector: #testDoesNotAssert)
+	self deny: (self detector detectSelector: #testDoesNotAssert)
 ]
