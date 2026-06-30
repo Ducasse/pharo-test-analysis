@@ -25,7 +25,7 @@ RTDMessageVisitor >> collectMessages [
 	methodVisitor selfSentMethods do: [ :aCompiledMethod | 
 		messages 
 			at: aCompiledMethod 
-			put: (aCompiledMethod parseTree allMessageNodes collect: #selector) asSet ]
+			put: ((aCompiledMethod class >> #testFirst) parseTree  allMessageNodes collect: #selector) asSet ]
 ]
 
 { #category : 'initialization' }

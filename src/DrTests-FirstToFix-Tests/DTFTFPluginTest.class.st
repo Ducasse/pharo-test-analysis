@@ -26,7 +26,7 @@ DTFTFPluginTest >> testRunForConfiguration [
 	| result configuration |
 	configuration := DTPluginConfiguration 
 		items: { DTFTFFakeTest } 
-		packages: #'DrTests-RottenTestsDebugger-Tests' asPackage.
+		packages: #'RottenTestsDebugger-Tests' asPackage.
 	result := (plugin runForConfiguration: configuration) buildTreeForUI subResults first.
 
 	self

@@ -16,7 +16,7 @@ TSDOverwrittenSetupDetectorTest >> detectorClass [
 
 { #category : 'tests' }
 TSDOverwrittenSetupDetectorTest >> testDetectsDifferentClasses [
-
+1 halt.
 	self detector detectSelector: #testOnlyAssigns.
 	self assert: (self detector detect: #y: from: TSDSubFakeTests )
 ]

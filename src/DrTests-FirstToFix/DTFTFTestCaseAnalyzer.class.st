@@ -30,7 +30,7 @@ DTFTFTestCaseAnalyzer >> analyzeTestCase: aTestCase [
 
 	| testCaseViewModel |
 	testCaseViewModel := self methodViewModelClass new.
-	self methodVisitor analyzeMethod: aTestCase compiledMethod.
+	self methodVisitor analyzeMethod: aTestCase .
 	self buildMethodViewModel: testCaseViewModel withTestCase: aTestCase.
 	self methodViewModels add: testCaseViewModel
 ]
@@ -39,7 +39,7 @@ DTFTFTestCaseAnalyzer >> analyzeTestCase: aTestCase [
 DTFTFTestCaseAnalyzer >> buildMethodViewModel: aMethodViewModel withTestCase: aTestCase [
 
 	aMethodViewModel
-		compiledMethod: aTestCase compiledMethod
+		compiledMethod: (aTestCase class lookupSelector: aTestCase selector)
 ]
 
 { #category : 'building' }

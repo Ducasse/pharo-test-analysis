@@ -34,7 +34,7 @@ TSDAssertionLessDetector >> detects [
 TSDAssertionLessDetector >> hasNoAssertionSelectors [
 
 	^ self methodVisitor helperSelectors allSatisfy: [ :aHelperSelector | 
-				(self methodVisitor messages does: self compiledMethod includesMessage: aHelperSelector) not ]
+				(self methodVisitor helperSelectors includes: aHelperSelector) not ]
 ]
 
 { #category : 'testing' }
