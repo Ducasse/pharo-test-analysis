@@ -47,3 +47,21 @@ TSDAssertionLessDetectorTest >> testIsAssertionLess [
 
 	self deny: (self detector detectSelector: #testDoesNotAssert)
 ]
+
+{ #category : 'tests' }
+TSDAssertionLessDetectorTest >> testSimpleExpectingAssertion [
+
+	| fixture helperMethods |
+	fixture := TSDAssertionLessDetectorTest >> #testSimpleExpectingAssertion.
+	helperMethods := { #assert: }.
+	self assert: (fixture sendNodes select: [ :m | helperMethods includes: m selector ]) isNotEmpty
+]
+
+{ #category : 'tests' }
+TSDAssertionLessDetectorTest >> testSimpleExpectingNoAssertion [
+	
+	|fixture helperMethods |
+	fixture:= (Number >> #negated).
+	helperMethods:={ #assert: }.
+	self assert: ( fixture sendNodes select: [ :m | helperMethods includes: m selector ]) isEmpty
+]

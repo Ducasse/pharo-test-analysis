@@ -10,8 +10,9 @@ Class {
 		'messageVisitor',
 		'methodVisitor'
 	],
-	#category : 'RottenTestsDebugger',
-	#package : 'RottenTestsDebugger'
+	#category : 'RottenTestsDebugger-visitors',
+	#package : 'RottenTestsDebugger',
+	#tag : 'visitors'
 }
 
 { #category : 'instance creation' }

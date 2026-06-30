@@ -8,8 +8,9 @@ Class {
 		'messages',
 		'methodVisitor'
 	],
-	#category : 'RottenTestsDebugger',
-	#package : 'RottenTestsDebugger'
+	#category : 'RottenTestsDebugger-visitors',
+	#package : 'RottenTestsDebugger',
+	#tag : 'visitors'
 }
 
 { #category : 'api' }

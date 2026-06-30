@@ -8,8 +8,9 @@ Class {
 		'methodsSelfCalls',
 		'foundMethods'
 	],
-	#category : 'RottenTestsDebugger',
-	#package : 'RottenTestsDebugger'
+	#category : 'RottenTestsDebugger-visitors',
+	#package : 'RottenTestsDebugger',
+	#tag : 'visitors'
 }
 
 { #category : 'private' }
