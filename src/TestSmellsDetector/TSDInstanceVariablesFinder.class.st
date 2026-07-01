@@ -1,5 +1,6 @@
 "
 I am an abstract visitor for finding variables in program nodes
+For now the test only finds those inst vars assigned a value
 "
 Class {
 	#name : 'TSDInstanceVariablesFinder',
@@ -17,8 +18,14 @@ Class {
 { #category : 'instance creation' }
 TSDInstanceVariablesFinder class >> accessings [
 
-	^ self
-		addVariablesSuchThat: [ :aVariableNode | aVariableNode parent isAssignment not ]
+	"An instance variable can be accessed in an assignment node like so:
+aa := instVar"
+
+
+	^ self addVariablesSuchThat: [ :aVariableNode |
+			  | parent |
+			  parent := aVariableNode parent.
+			  parent isAssignment and: [ parent variable = aVariableNode ] not ]
 ]
 
 { #category : 'instance creation' }
@@ -32,8 +39,10 @@ TSDInstanceVariablesFinder class >> addVariablesSuchThat: aBlock [
 { #category : 'instance creation' }
 TSDInstanceVariablesFinder class >> assignments [
 
-	^ self
-		addVariablesSuchThat: [ :aVariableNode | aVariableNode parent isAssignment ]
+	^ self addVariablesSuchThat: [ :aVariableNode |
+			  | parent |
+			  parent := aVariableNode parent.
+			  parent isAssignment and: [ parent variable = aVariableNode ] ]
 ]
 
 { #category : 'accessing' }
@@ -60,7 +69,7 @@ TSDInstanceVariablesFinder >> at: aSelector [
 
 	| method |
 	method := self selfClass lookupSelector: aSelector.
-
+"why method is created"
 	^ self methodVariables at: aSelector at: self selfClass 
 		ifAbsentPut: [ self reset;
 		  visitSelector: aSelector;

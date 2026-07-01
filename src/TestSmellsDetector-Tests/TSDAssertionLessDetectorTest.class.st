@@ -22,6 +22,12 @@ TSDAssertionLessDetectorTest >> detectorClass [
 	^ TSDAssertionLessDetector 
 ]
 
+{ #category : 'as yet unclassified' }
+TSDAssertionLessDetectorTest >> fixtureScenarioCodeSmellNonExecutedassert [
+
+	true ifFalse: [ self assert: true ]
+]
+
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
 
