@@ -1,5 +1,8 @@
 "
 A TSDOverWrittenSetupDetectorTest is a test class for testing the behavior of TSDOverWrittenSetupDetector
+
+The setup defines the instance variable values beforehand.
+When a tests reassigns a value. that smells bad !
 "
 Class {
 	#name : 'TSDOverwrittenSetupDetectorTest',
