@@ -47,5 +47,5 @@ TSDClassReferencesVisitor >> reset [
 TSDClassReferencesVisitor >> visitVariableNode: aVariableNode [
 
 	aVariableNode isGlobalVariable ifTrue: [ self classReferences add: aVariableNode variable value ].
-	super visitVariableNode: aVariableNode
+	super visitVariableNode: aVariableNode "pourquoi cette ligne"
 ]

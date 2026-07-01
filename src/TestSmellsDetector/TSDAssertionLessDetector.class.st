@@ -36,6 +36,7 @@ TSDAssertionLessDetector >> hasNoAssertionSelectors [
 "condition seems to always be false"
 	^ self methodVisitor helperSelectors allSatisfy: [ :aHelperSelector | 
 				(self methodVisitor helperSelectors includes: aHelperSelector) not ]
+			"le 2e helperSelectors devrait être la liste des trucs trouvés dans la fonction analysée plutot que la liste des trucs qu'on cherche sinon on a une tautologie."
 ]
 
 { #category : 'testing' }
@@ -46,9 +47,9 @@ TSDAssertionLessDetector >> hasNohelpers [
 
 { #category : 'testing' }
 TSDAssertionLessDetector >> isAssertionLess [
-
+1 halt .
 	self analyzeMethod .
-	^ self hasNoAssertionSelectors and: [ self hasNohelpers ]
+	^ self hasNoAssertionSelectors and: [ self hasNohelpers ] "y'a pas de assert"
 ]
 
 { #category : 'accessing' }

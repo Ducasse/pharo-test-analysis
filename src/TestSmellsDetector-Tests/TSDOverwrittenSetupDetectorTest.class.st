@@ -26,7 +26,7 @@ TSDOverwrittenSetupDetectorTest >> testDetectsDifferentClasses [
 
 { #category : 'tests' }
 TSDOverwrittenSetupDetectorTest >> testDetectsOverWrite [
-
+1 halt.
 	self detector selector: #testOnlyAssigns.
-	self assertCollection: self detector result overwrittenVariables hasSameElements: { #x }
+	self assertCollection: self detector result overwrittenVariables hasSameElements: { #x } "nom mal choisit ou test artificiel"
 ]

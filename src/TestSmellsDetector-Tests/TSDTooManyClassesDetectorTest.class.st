@@ -16,7 +16,7 @@ TSDTooManyClassesDetectorTest >> detectorClass [
 
 { #category : 'tests' }
 TSDTooManyClassesDetectorTest >> testDetects [
-
+1 halt.
 	self assert: (self detector detectSelector: #testUsesTooManyClasses)
 ]
 
@@ -36,9 +36,9 @@ TSDTooManyClassesDetectorTest >> testDetectsUsesOfTheSameClass [
 
 { #category : 'tests' }
 TSDTooManyClassesDetectorTest >> testRemembersDetect [
-
+1 halt.
 	self
 		assert: (self detector detectSelector: #testUsesTooManyClasses);
 		deny: (self detector detectSelector: #testConnectedToAssertion);
-		assert: (self detector detectSelector: #testUsesTooManyClasses)
+		assert: (self detector detectSelector: #testUsesTooManyClasses) "pourquoi faire 2 fois le même test?"
 ]
