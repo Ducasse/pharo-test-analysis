@@ -108,6 +108,12 @@ TSDFakeTests >> testUsesTooManyClasses [
 	TSDSubFakeTests 
 ]
 
+{ #category : 'tests' }
+TSDFakeTests >> testifTrue [
+
+	true ifTrue: [ true ]
+]
+
 { #category : 'accessing' }
 TSDFakeTests >> x [
 

@@ -49,7 +49,7 @@ TSDAssertionLessDetector >> hasNohelpers [
 TSDAssertionLessDetector >> isAssertionLess [
 1 halt .
 	self analyzeMethod .
-	^ self hasNoAssertionSelectors and: [ self hasNohelpers ] "y'a pas de assert"
+	^ self hasNoAssertionSelectors and: [ self hasNohelpers ] "pourquoi cette méthode est rangé dans les tests"
 ]
 
 { #category : 'accessing' }
