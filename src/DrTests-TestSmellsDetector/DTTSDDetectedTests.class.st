@@ -8,7 +8,10 @@ Class {
 		'assertionlessTests',
 		'overwrittenSetupTests',
 		'manyClassReferencesTests',
-		'uselessSetupTests'
+		'uselessSetupTests',
+		'tooManyAssertionsTests',
+		'magicLiteralTests',
+		'literalPollutionTests'
 	],
 	#category : 'DrTests-TestSmellsDetector-Presenters',
 	#package : 'DrTests-TestSmellsDetector',
@@ -25,6 +28,28 @@ DTTSDDetectedTests >> assertionlessTests [
 DTTSDDetectedTests >> assertionlessTests: anObject [
 
 	assertionlessTests := anObject
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> literalPollutionTests [
+	^ literalPollutionTests
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> literalPollutionTests: anObject [
+	literalPollutionTests := anObject
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> magicLiteralTests [
+
+	^ magicLiteralTests
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> magicLiteralTests: anObject [
+
+	magicLiteralTests := anObject
 ]
 
 { #category : 'accessing' }
@@ -49,6 +74,18 @@ DTTSDDetectedTests >> overwrittenSetupTests [
 DTTSDDetectedTests >> overwrittenSetupTests: anObject [
 
 	overwrittenSetupTests := anObject
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> tooManyAssertionsTests [
+
+	^ tooManyAssertionsTests
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> tooManyAssertionsTests: anObject [
+
+	tooManyAssertionsTests := anObject
 ]
 
 { #category : 'accessing' }
