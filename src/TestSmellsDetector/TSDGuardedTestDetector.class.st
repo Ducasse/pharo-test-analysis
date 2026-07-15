@@ -20,20 +20,29 @@ TSDGuardedTestDetector >> HasConditionalTest [
 ]
 
 { #category : 'testing' }
+TSDGuardedTestDetector >> HasConditionalTest: aMethode [
+
+	| ast visitor |
+	ast := aMethode parseTree .
+	visitor := Visitor new.
+	^ visitor visitMessageNode: ast.
+	
+]
+
+{ #category : 'testing' }
 TSDGuardedTestDetector >> IsGuardedTest [
 
 	self analyzeMethod.
-	^ self HasConditionalTest
+	^ self IsGuardedTest: selector 
 ]
 
 { #category : 'testing' }
 TSDGuardedTestDetector >> IsGuardedTest: aMethode [
 
-	| fixture helperMethods |
-	fixture := aMethode .
-	helperMethods := { #ifTrue: }.
-	true ifTrue: [ true ].
-	self assert: (fixture sendNodes select: [ :m | helperMethods includes: m selector ]) isNotEmpty
+	| fixture classes |
+	classes := Smalltalk allClasses select: [:c | c includesSelector: aMethode ].
+	fixture := classes first >> aMethode .
+	^ (fixture sendNodes select: [ :m | self conditionalSelector includes: m selector ]) isNotEmpty
 ]
 
 { #category : 'testing' }
@@ -45,7 +54,7 @@ TSDGuardedTestDetector >> analyzeMethod [
 { #category : 'accessing' }
 TSDGuardedTestDetector >> conditionalSelector [
 
-	^ conditionalSelector ifNil: [ conditionalSelector := #(#ifTrue: . #ifFalse: ) ]
+	^ conditionalSelector ifNil: [ conditionalSelector := #(#ifTrue: #ifFalse: #ifNil:) ]
 ]
 
 { #category : 'accessing' }

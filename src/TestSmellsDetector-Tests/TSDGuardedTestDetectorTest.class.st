@@ -5,6 +5,12 @@ Class {
 	#package : 'TestSmellsDetector-Tests'
 }
 
+{ #category : 'running' }
+TSDGuardedTestDetectorTest >> detector: aClass [
+
+	detector := self detectorClass selfClass: aClass 
+]
+
 { #category : 'accessing' }
 TSDGuardedTestDetectorTest >> detectorClass [
 	^ TSDGuardedTestDetector
@@ -22,8 +28,18 @@ TSDGuardedTestDetectorTest >> testIsGuarded2 [
 
 | fixture |
 	1 halt.
-	fixture := TSDGuardedTestDetectorTest >> #testSimpleExpectingGuarded.
-	self assert: (self detectorClass IsGuardedTest: fixture )
+	fixture := #testSimpleExpectingGuarded.
+	self detector: TSDGuardedTestDetectorTest.
+	self assert: (self detector detectSelector: #testSimpleExpectingGuarded )
+]
+
+{ #category : 'running' }
+TSDGuardedTestDetectorTest >> testIsGuarded3 [
+
+	| detector |
+	1 halt.
+	detector := TSDGuardedTestDetector new.
+	self assert: (detector HasConditionalTest: TSDFakeTests>>#testifTrue)
 ]
 
 { #category : 'running' }
@@ -44,7 +60,6 @@ TSDGuardedTestDetectorTest >> testSimpleExpectingGuarded2 [
 	1 halt.
 	fixture := TSDFakeTests >> #testifTrue.
 	helperMethods := { #ifTrue: }.
-	true ifTrue: [ true ].
 	self assert: (fixture sendNodes select: [ :m | helperMethods includes: m selector ]) isNotEmpty
 ]
 
@@ -55,6 +70,5 @@ TSDGuardedTestDetectorTest >> testSimpleExpectingGuarded3 [
 	1 halt.
 	fixture := TSDFakeTests >> #testifTrue.
 	helperMethods := { #ifFalse: }.
-	true ifTrue: [ true ].
 	self deny: (fixture sendNodes select: [ :m | helperMethods includes: m selector ]) isNotEmpty
 ]

@@ -111,7 +111,8 @@ TSDFakeTests >> testUsesTooManyClasses [
 { #category : 'tests' }
 TSDFakeTests >> testifTrue [
 
-	true ifTrue: [ true ]
+	true ifTrue: [ true ].
+	self x 
 ]
 
 { #category : 'accessing' }

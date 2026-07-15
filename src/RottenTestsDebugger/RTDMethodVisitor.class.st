@@ -26,7 +26,7 @@ RTDMethodVisitor >> analyzeMethod: aCompiledMethod [
 
 	selfSentMethods removeAll.
 	self
-		selfClass: aCompiledMethod   ;
+		selfClass: aCompiledMethod classBinding value   ;
 	 	visit: (aCompiledMethod ) parseTree.
 	selfSentMethods add: aCompiledMethod 
 ]
