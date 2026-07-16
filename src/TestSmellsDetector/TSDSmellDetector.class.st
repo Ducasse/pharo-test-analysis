@@ -53,6 +53,7 @@ TSDSmellDetector >> detect: aSelector from: aClass [
 TSDSmellDetector >> detectSelector: aSelector [
 	
 	"assumes the self class was already given"
+
 	^ self selector: aSelector; detects
 ]
 

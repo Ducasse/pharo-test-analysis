@@ -26,9 +26,7 @@ TSDGuardedTestDetectorTest >> testIsGuarded [
 { #category : 'running' }
 TSDGuardedTestDetectorTest >> testIsGuarded2 [
 
-| fixture |
 	1 halt.
-	fixture := #testSimpleExpectingGuarded.
 	self detector: TSDGuardedTestDetectorTest.
 	self assert: (self detector detectSelector: #testSimpleExpectingGuarded )
 ]
@@ -36,10 +34,16 @@ TSDGuardedTestDetectorTest >> testIsGuarded2 [
 { #category : 'running' }
 TSDGuardedTestDetectorTest >> testIsGuarded3 [
 
-	| detector |
+1 halt.
+	self assert: ( self detector detectSelector: #testifFalse )
+]
+
+{ #category : 'running' }
+TSDGuardedTestDetectorTest >> testIsNotGuarded [
+
 	1 halt.
-	detector := TSDGuardedTestDetector new.
-	self assert: (detector HasConditionalTest: TSDFakeTests>>#testifTrue)
+	self detector: TSDGuardedTestDetectorTest.
+	self deny: (self detector detectSelector: #testIsGuarded )
 ]
 
 { #category : 'running' }

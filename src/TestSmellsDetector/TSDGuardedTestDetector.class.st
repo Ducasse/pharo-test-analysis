@@ -20,20 +20,11 @@ TSDGuardedTestDetector >> HasConditionalTest [
 ]
 
 { #category : 'testing' }
-TSDGuardedTestDetector >> HasConditionalTest: aMethode [
-
-	| ast visitor |
-	ast := aMethode parseTree .
-	visitor := Visitor new.
-	^ visitor visitMessageNode: ast.
-	
-]
-
-{ #category : 'testing' }
 TSDGuardedTestDetector >> IsGuardedTest [
 
 	self analyzeMethod.
-	^ self IsGuardedTest: selector 
+	^ methodVisitor containconditionaltest.
+
 ]
 
 { #category : 'testing' }
@@ -65,13 +56,14 @@ TSDGuardedTestDetector >> conditionalSelector: anObject [
 
 { #category : 'testing' }
 TSDGuardedTestDetector >> detects [
+
 	^ self IsGuardedTest 
 ]
 
 { #category : 'accessing' }
 TSDGuardedTestDetector >> methodVisitor [
 
-	^ methodVisitor ifNil: [ methodVisitor := RTDHelperVisitor new ]
+	^ methodVisitor ifNil: [ methodVisitor := SimpleGuardedTestVisitor new ]
 ]
 
 { #category : 'accessing' }
