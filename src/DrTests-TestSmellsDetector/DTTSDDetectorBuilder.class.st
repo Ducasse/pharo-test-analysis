@@ -18,7 +18,7 @@ DTTSDDetectorBuilder class >> assertionless [
 
 	^ self
 		  detector: (TSDAssertionLessDetector new
-				   methodVisitor: RTDHelperVisitor withAssertableSelectors;
+				   methodVisitor: SimpleNoAssertVisitor new ;
 				   yourself)
 		  setDataBlock: [ :aTestData :tests | 
 			aTestData assertionlessTests: (tests select: #isAssertionLess ) ]

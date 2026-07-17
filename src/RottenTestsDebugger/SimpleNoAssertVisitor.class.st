@@ -30,10 +30,9 @@ SimpleNoAssertVisitor >> initialize [
 { #category : 'visiting' }
 SimpleNoAssertVisitor >> visitMessageNode: aMessageNode [
 
+
 	self visitNodes: aMessageNode.
-	(aMessageNode receiver isSelfVariable 
-		or: [ aMessageNode receiver isSuperVariable ]) 
-			ifFalse: [ ^ self ].
-	self containsAssertMessageNode: true.
+	(aMessageNode selector beginsWithAnyOf: { #assert . "#deny "}) ifTrue: [ self containsAssertMessageNode: true. ]
+	"dans le cas d'un self guetter on renvoit true même sans assert et assert fonctionne aussi sur n'importe quel objet"
 	
 ]

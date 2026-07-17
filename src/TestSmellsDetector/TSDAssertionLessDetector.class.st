@@ -32,7 +32,7 @@ TSDAssertionLessDetector >> detects [
 
 { #category : 'testing' }
 TSDAssertionLessDetector >> hasNoAssertionSelectors [
-1 halt.
+
 "condition seems to always be false"
 	^ self methodVisitor helperSelectors allSatisfy: [ :aHelperSelector | 
 				(self methodVisitor helperSelectors includes: aHelperSelector) not ]
@@ -47,15 +47,15 @@ TSDAssertionLessDetector >> hasNohelpers [
 
 { #category : 'testing' }
 TSDAssertionLessDetector >> isAssertionLess [
-1 halt .
+
 	self analyzeMethod .
-	^ self hasNoAssertionSelectors and: [ self hasNohelpers ] "pourquoi cette méthode est rangé dans les tests"
+	^ self methodVisitor containAssertMessagNode "pourquoi cette méthode est rangé dans les tests"
 ]
 
 { #category : 'accessing' }
 TSDAssertionLessDetector >> methodVisitor [
 
-	^ methodVisitor ifNil: [ methodVisitor := RTDHelperVisitor new ]
+	^ methodVisitor ifNil: [ methodVisitor := SimpleNoAssertVisitor new ]
 ]
 
 { #category : 'accessing' }

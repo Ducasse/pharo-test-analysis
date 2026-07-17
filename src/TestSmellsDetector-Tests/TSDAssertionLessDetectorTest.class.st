@@ -12,7 +12,7 @@ Class {
 TSDAssertionLessDetectorTest >> detector [ 
 
 	^ detector ifNil: [ detector := super detector.
-		detector methodVisitor helperSelectors: #( assert: ).
+		"detector methodVisitor helperSelectors: #( assert: )."
 		^detector ]
 ]
 
@@ -30,13 +30,13 @@ TSDAssertionLessDetectorTest >> fixtureScenarioCodeSmellNonExecutedassert [
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
-1 halt.
-	self deny: (self detector detectSelector: #testUsesInstanceVar)
+
+	self assert: (self detector detectSelector: #testUsesInstanceVar)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasConnectedAssertion [
-1 halt.
+
 	self deny: (self detector detectSelector: #testConnectedToAssertion)
 ]
 
