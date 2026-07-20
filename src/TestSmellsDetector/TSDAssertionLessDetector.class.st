@@ -15,6 +15,7 @@ Class {
 { #category : 'private' }
 TSDAssertionLessDetector >> analyzeMethod [
 
+	self methodVisitor containsAssertMessageNode: false.
 	self methodVisitor analyzeMethod: self compiledMethod 
 ]
 
@@ -49,7 +50,7 @@ TSDAssertionLessDetector >> hasNohelpers [
 TSDAssertionLessDetector >> isAssertionLess [
 
 	self analyzeMethod .
-	^ self methodVisitor containAssertMessagNode "pourquoi cette méthode est rangé dans les tests"
+	^ self methodVisitor containAssertMessagNode not "pourquoi cette méthode est rangé dans les tests"
 ]
 
 { #category : 'accessing' }

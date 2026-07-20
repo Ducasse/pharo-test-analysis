@@ -31,27 +31,39 @@ TSDAssertionLessDetectorTest >> fixtureScenarioCodeSmellNonExecutedassert [
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
 
-	self assert: (self detector detectSelector: #testUsesInstanceVar)
+	self deny: (self detector detectSelector: #testUsesInstanceVar)
+]
+
+{ #category : 'tests' }
+TSDAssertionLessDetectorTest >> testHasAssertion2 [
+
+	self deny: (self detector detectSelector: #testMultipleDetections)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasConnectedAssertion [
 
-	self deny: (self detector detectSelector: #testConnectedToAssertion)
+	self assert: (self detector detectSelector: #testConnectedToAssertion)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasConnectedAssertionTwice [
 
 	self
-		deny: (self detector detectSelector: #testConnectedToAssertion);
-		deny: (self detector detectSelector: #testConnectedToAssertion)
+		assert: (self detector detectSelector: #testConnectedToAssertion);
+		assert: (self detector detectSelector: #testConnectedToAssertion)
+]
+
+{ #category : 'tests' }
+TSDAssertionLessDetectorTest >> testHasNoAssertion2 [
+
+	self assert: (self detector detectSelector: #testm1)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testIsAssertionLess [
 
-	self deny: (self detector detectSelector: #testDoesNotAssert)
+	self assert: (self detector detectSelector: #testDoesNotAssert)
 ]
 
 { #category : 'tests' }

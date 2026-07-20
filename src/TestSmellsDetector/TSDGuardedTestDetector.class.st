@@ -39,7 +39,16 @@ TSDGuardedTestDetector >> IsGuardedTest: aMethode [
 { #category : 'testing' }
 TSDGuardedTestDetector >> analyzeMethod [
 
+	self methodVisitor containconditionaltest: false.
 	self methodVisitor analyzeMethod: self compiledMethod 
+]
+
+{ #category : 'testing' }
+TSDGuardedTestDetector >> buildResult: aResult [
+
+	super buildResult: aResult.
+	aResult IsGuarded: self IsGuardedTest 
+
 ]
 
 { #category : 'accessing' }
@@ -70,4 +79,10 @@ TSDGuardedTestDetector >> methodVisitor [
 TSDGuardedTestDetector >> methodVisitor: anObject [
 
 	methodVisitor := anObject
+]
+
+{ #category : 'accessing' }
+TSDGuardedTestDetector >> smellResultClass [
+
+	^ TSDGuardedTestResult
 ]

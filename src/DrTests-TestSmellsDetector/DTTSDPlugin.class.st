@@ -40,7 +40,8 @@ DTTSDPlugin >> builder [
 			  DTTSDDetectorBuilder assertionless.
 			  DTTSDDetectorBuilder overwrittenSetup.
 			  DTTSDDetectorBuilder classReferences.
-			  DTTSDDetectorBuilder uselessSetup }
+			  DTTSDDetectorBuilder uselessSetup.
+			  DTTSDDetectorBuilder guarded }
 ]
 
 { #category : 'accessing' }
@@ -61,6 +62,7 @@ DTTSDPlugin >> runForConfiguration: aDTpluginConfiguration [
 	| detections |
 	detections := DTTSDDetectedTests new.
 	self builder buildData: detections withTests: aDTpluginConfiguration asTestSuite tests.
+
 	^ self pluginResultClass detectedTests: detections
 ]
 

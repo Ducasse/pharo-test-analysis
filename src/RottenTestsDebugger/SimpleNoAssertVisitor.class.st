@@ -2,7 +2,8 @@ Class {
 	#name : 'SimpleNoAssertVisitor',
 	#superclass : 'RTDMethodVisitor',
 	#instVars : [
-		'containAssertMessagNode'
+		'containAssertMessagNode',
+		'assertselectors'
 	],
 	#category : 'RottenTestsDebugger-visitors',
 	#package : 'RottenTestsDebugger',
@@ -25,14 +26,14 @@ SimpleNoAssertVisitor >> containsAssertMessageNode: aBoolean [
 SimpleNoAssertVisitor >> initialize [ 
 	super initialize .
 	containAssertMessagNode:= false.
+	assertselectors := { #assert . #deny }
 ]
 
 { #category : 'visiting' }
 SimpleNoAssertVisitor >> visitMessageNode: aMessageNode [
 
-
 	self visitNodes: aMessageNode.
-	(aMessageNode selector beginsWithAnyOf: { #assert . "#deny "}) ifTrue: [ self containsAssertMessageNode: true. ]
+	containAssertMessagNode := containAssertMessagNode or: [ aMessageNode selector beginsWithAnyOf: assertselectors ]
 	"dans le cas d'un self guetter on renvoit true même sans assert et assert fonctionne aussi sur n'importe quel objet"
 	
 ]

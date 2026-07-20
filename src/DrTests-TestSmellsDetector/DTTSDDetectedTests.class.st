@@ -8,7 +8,8 @@ Class {
 		'assertionlessTests',
 		'overwrittenSetupTests',
 		'manyClassReferencesTests',
-		'uselessSetupTests'
+		'uselessSetupTests',
+		'guardedTests'
 	],
 	#category : 'DrTests-TestSmellsDetector-Presenters',
 	#package : 'DrTests-TestSmellsDetector',
@@ -25,6 +26,18 @@ DTTSDDetectedTests >> assertionlessTests [
 DTTSDDetectedTests >> assertionlessTests: anObject [
 
 	assertionlessTests := anObject
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> guardedTests [
+
+	^ guardedTests
+]
+
+{ #category : 'accessing' }
+DTTSDDetectedTests >> guardedTests: anObject [
+
+	guardedTests := anObject
 ]
 
 { #category : 'accessing' }

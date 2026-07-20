@@ -64,6 +64,14 @@ TSDFakeTests >> testIsConnectedToInstanceVar [
 ]
 
 { #category : 'tests' }
+TSDFakeTests >> testMultipleDetections [
+
+	self
+		deny: (self detector detectSelector: #testUsesInstanceVar);
+		assert: (self detector detectSelector: #testUsesLocalVariables)
+]
+
+{ #category : 'tests' }
 TSDFakeTests >> testOnlyAssigns [
 
 	x := 1.
@@ -120,6 +128,11 @@ TSDFakeTests >> testifTrue [
 
 	1 = 1 ifTrue: [ true ].
 	self x 
+]
+
+{ #category : 'tests' }
+TSDFakeTests >> testm1 [
+	1 asFloat 
 ]
 
 { #category : 'accessing' }
