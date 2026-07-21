@@ -34,6 +34,9 @@ DTTSDResult >> buildTreeForUI [
 				   yourself).
 			  (self buildTreeForUIManyClassReferences
 				   name: 'Tests references classes too many times';
+				   yourself).
+				(self buildTreeForUIGuarded
+				   name: 'Tests guarded';
 				   yourself) }
 ]
 
@@ -42,6 +45,13 @@ DTTSDResult >> buildTreeForUIAssertionless [
 
 	<dtTestTSDResultTreeNamed: 'Tests without assertions' order: 5>
 	^ self buildTreeFrom: self detectedTests assertionlessTests
+]
+
+{ #category : 'accessing' }
+DTTSDResult >> buildTreeForUIGuarded [
+
+	<dtTestTSDResultTreeNamed: 'Tests with conditional blocks' order: 6>
+	^ self buildTreeFrom: self detectedTests guardedTests
 ]
 
 { #category : 'accessing' }

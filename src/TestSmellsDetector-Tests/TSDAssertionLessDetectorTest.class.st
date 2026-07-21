@@ -12,7 +12,7 @@ Class {
 TSDAssertionLessDetectorTest >> detector [ 
 
 	^ detector ifNil: [ detector := super detector.
-		detector methodVisitor helperSelectors: #( assert: ).
+		"detector methodVisitor helperSelectors: #( assert: )."
 		^detector ]
 ]
 
@@ -30,28 +30,40 @@ TSDAssertionLessDetectorTest >> fixtureScenarioCodeSmellNonExecutedassert [
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
-1 halt.
+
 	self deny: (self detector detectSelector: #testUsesInstanceVar)
 ]
 
 { #category : 'tests' }
+TSDAssertionLessDetectorTest >> testHasAssertion2 [
+
+	self deny: (self detector detectSelector: #testMultipleDetections)
+]
+
+{ #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasConnectedAssertion [
-1 halt.
-	self deny: (self detector detectSelector: #testConnectedToAssertion)
+
+	self assert: (self detector detectSelector: #testConnectedToAssertion)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasConnectedAssertionTwice [
 
 	self
-		deny: (self detector detectSelector: #testConnectedToAssertion);
-		deny: (self detector detectSelector: #testConnectedToAssertion)
+		assert: (self detector detectSelector: #testConnectedToAssertion);
+		assert: (self detector detectSelector: #testConnectedToAssertion)
+]
+
+{ #category : 'tests' }
+TSDAssertionLessDetectorTest >> testHasNoAssertion2 [
+
+	self assert: (self detector detectSelector: #testm1)
 ]
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testIsAssertionLess [
 
-	self deny: (self detector detectSelector: #testDoesNotAssert)
+	self assert: (self detector detectSelector: #testDoesNotAssert)
 ]
 
 { #category : 'tests' }

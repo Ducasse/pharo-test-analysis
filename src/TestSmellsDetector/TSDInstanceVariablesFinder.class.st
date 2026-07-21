@@ -25,7 +25,7 @@ aa := instVar"
 	^ self addVariablesSuchThat: [ :aVariableNode |
 			  | parent |
 			  parent := aVariableNode parent.
-			  parent isAssignment and: [ parent variable = aVariableNode ] not ]
+			  (parent isAssignment and: [ parent variable = aVariableNode ])  not ]
 ]
 
 { #category : 'instance creation' }

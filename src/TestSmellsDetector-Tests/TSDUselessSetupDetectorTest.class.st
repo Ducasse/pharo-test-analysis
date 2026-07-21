@@ -58,3 +58,8 @@ TSDUselessSetupDetectorTest >> testMultipleDetections [
 		deny: (self detector detectSelector: #testUsesInstanceVar);
 		assert: (self detector detectSelector: #testUsesLocalVariables)
 ]
+
+{ #category : 'as yet unclassified' }
+TSDUselessSetupDetectorTest >> testm1 [
+	1 asFloat 
+]

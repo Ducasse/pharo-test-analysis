@@ -16,9 +16,10 @@ Class {
 { #category : 'accessing' }
 DTTSDDetectorBuilder class >> assertionless [
 
+
 	^ self
 		  detector: (TSDAssertionLessDetector new
-				   methodVisitor: RTDHelperVisitor withAssertableSelectors;
+				   methodVisitor: SimpleNoAssertVisitor new ;
 				   yourself)
 		  setDataBlock: [ :aTestData :tests | 
 			aTestData assertionlessTests: (tests select: #isAssertionLess ) ]
@@ -34,10 +35,22 @@ DTTSDDetectorBuilder class >> classReferences [
 { #category : 'instance creation' }
 DTTSDDetectorBuilder class >> detector: aDetector setDataBlock: aBlock [
 
+
 	^ self new
 		detector: aDetector;
 		setDataBlock: aBlock;
 		yourself
+]
+
+{ #category : 'accessing' }
+DTTSDDetectorBuilder class >> guarded [
+
+	^ self
+		  detector: (TSDGuardedTestDetector new
+				   methodVisitor: SimpleGuardedTestVisitor new ;
+				   yourself)
+		  setDataBlock: [ :aTestData :tests | 
+			aTestData guardedTests: (tests select: #IsGuarded ) ]
 ]
 
 { #category : 'accessing' }
