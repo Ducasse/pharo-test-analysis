@@ -5,7 +5,8 @@ Class {
 	#name : 'TSDClassReferencesVisitor',
 	#superclass : 'RTFSelfCallVisitorInterpreter',
 	#instVars : [
-		'classReferences'
+		'classReferences',
+		'found'
 	],
 	#category : 'TestSmellsDetector-Visitors',
 	#package : 'TestSmellsDetector',
@@ -22,6 +23,11 @@ TSDClassReferencesVisitor >> anyClassIsReferencedMoreThan: aNumber [
 TSDClassReferencesVisitor >> classReferences [
 
 	^ classReferences ifNil: [ classReferences := Bag new ]
+]
+
+{ #category : 'visiting' }
+TSDClassReferencesVisitor >> containsAssertMessageNode: aBoolean [ 
+	found:= aBoolean .
 ]
 
 { #category : 'api' }

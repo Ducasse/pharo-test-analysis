@@ -8,7 +8,8 @@ Class {
 	#instVars : [
 		'foundVariables',
 		'addVariablesSuchThat',
-		'methodVariables'
+		'methodVariables',
+		'containsAssertMessageNode'
 	],
 	#category : 'TestSmellsDetector-Visitors',
 	#package : 'TestSmellsDetector',
@@ -74,6 +75,12 @@ TSDInstanceVariablesFinder >> at: aSelector [
 		ifAbsentPut: [ self reset;
 		  visitSelector: aSelector;
 		  foundVariables ]
+]
+
+{ #category : 'visiting' }
+TSDInstanceVariablesFinder >> containsAssertMessageNode: aBoolean [
+
+	containsAssertMessageNode := aBoolean
 ]
 
 { #category : 'accessing' }
