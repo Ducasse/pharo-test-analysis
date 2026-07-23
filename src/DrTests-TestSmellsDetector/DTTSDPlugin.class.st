@@ -61,7 +61,7 @@ DTTSDPlugin >> runForConfiguration: aDTpluginConfiguration [
 
 	| detections |
 	detections := DTTSDDetectedTests new.
-	self builder buildData: detections withTests: aDTpluginConfiguration asTestSuite tests.
+	self builder buildData: detections withTests: (aDTpluginConfiguration asTestSuite tests).
 
 	^ self pluginResultClass detectedTests: detections
 ]

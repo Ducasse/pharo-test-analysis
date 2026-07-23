@@ -45,7 +45,7 @@ TSDTooManyClassesDetector >> ocurrenceThreshold [
 { #category : 'accessing' }
 TSDTooManyClassesDetector >> referenceVisitor [
 
-	^ visitor ifNil: [ visitor := TSDClassReferencesVisitor new selfClass: self selfClass; yourself ]
+	^ visitor ifNil: [ visitor := TSDClassReferencesVisitor new selfClass: self selfClass; yourself ] 
 ]
 
 { #category : 'private' }

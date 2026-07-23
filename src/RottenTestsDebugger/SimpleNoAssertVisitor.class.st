@@ -26,7 +26,7 @@ SimpleNoAssertVisitor >> containsAssertMessageNode: aBoolean [
 SimpleNoAssertVisitor >> initialize [ 
 	super initialize .
 	containAssertMessagNode:= false.
-	assertselectors := { #assert . #deny }
+	assertselectors := { #assert . #deny . #should }
 ]
 
 { #category : 'visiting' }

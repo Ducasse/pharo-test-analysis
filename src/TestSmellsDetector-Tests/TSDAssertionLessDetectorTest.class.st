@@ -30,7 +30,7 @@ TSDAssertionLessDetectorTest >> fixtureScenarioCodeSmellNonExecutedassert [
 
 { #category : 'tests' }
 TSDAssertionLessDetectorTest >> testHasAssertion [
-
+1halt.
 	self deny: (self detector detectSelector: #testUsesInstanceVar)
 ]
 
