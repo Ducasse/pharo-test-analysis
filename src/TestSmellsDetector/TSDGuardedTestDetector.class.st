@@ -5,8 +5,7 @@ Class {
 	#name : 'TSDGuardedTestDetector',
 	#superclass : 'TSDSmellDetector',
 	#instVars : [
-		'methodVisitor',
-		'conditionalSelector'
+		'methodVisitor'
 	],
 	#category : 'TestSmellsDetector-Detectors',
 	#package : 'TestSmellsDetector',
@@ -14,26 +13,11 @@ Class {
 }
 
 { #category : 'testing' }
-TSDGuardedTestDetector >> HasConditionalTest [
-
-	^ self methodVisitor helperSelectors includesAny: #conditionalSelector
-]
-
-{ #category : 'testing' }
 TSDGuardedTestDetector >> IsGuardedTest [
 
 	self analyzeMethod.
 	^ methodVisitor containconditionaltest.
 
-]
-
-{ #category : 'testing' }
-TSDGuardedTestDetector >> IsGuardedTest: aMethode [
-
-	| fixture classes |
-	classes := Smalltalk allClasses select: [:c | c includesSelector: aMethode ].
-	fixture := classes first >> aMethode .
-	^ (fixture sendNodes select: [ :m | self conditionalSelector includes: m selector ]) isNotEmpty
 ]
 
 { #category : 'testing' }
@@ -49,18 +33,6 @@ TSDGuardedTestDetector >> buildResult: aResult [
 	super buildResult: aResult.
 	aResult IsGuarded: self IsGuardedTest 
 
-]
-
-{ #category : 'accessing' }
-TSDGuardedTestDetector >> conditionalSelector [
-
-	^ conditionalSelector ifNil: [ conditionalSelector := #(#ifTrue: #ifFalse: #ifNil:) ]
-]
-
-{ #category : 'accessing' }
-TSDGuardedTestDetector >> conditionalSelector: anObject [
-
-	conditionalSelector := anObject
 ]
 
 { #category : 'testing' }

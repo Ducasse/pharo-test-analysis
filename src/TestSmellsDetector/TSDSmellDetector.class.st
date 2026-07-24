@@ -29,7 +29,7 @@ TSDSmellDetector class >> selfClass: aClass [
 TSDSmellDetector >> buildResult: aResult [
 
 	"assumes the parameters are given"
-	self detects.
+	
 	aResult 
 		selector: self selector;
 		testClass: self selfClass

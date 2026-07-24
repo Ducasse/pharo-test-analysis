@@ -32,25 +32,10 @@ TSDAssertionLessDetector >> detects [
 ]
 
 { #category : 'testing' }
-TSDAssertionLessDetector >> hasNoAssertionSelectors [
-
-"condition seems to always be false"
-	^ self methodVisitor helperSelectors allSatisfy: [ :aHelperSelector | 
-				(self methodVisitor helperSelectors includes: aHelperSelector) not ]
-			"le 2e helperSelectors devrait être la liste des trucs trouvés dans la fonction analysée plutot que la liste des trucs qu'on cherche sinon on a une tautologie."
-]
-
-{ #category : 'testing' }
-TSDAssertionLessDetector >> hasNohelpers [
-
-	^ (self methodVisitor helpers at: self compiledMethod) isEmpty 
-]
-
-{ #category : 'testing' }
 TSDAssertionLessDetector >> isAssertionLess [
 
 	self analyzeMethod .
-	^ self methodVisitor containAssertMessagNode not "pourquoi cette méthode est rangé dans les tests"
+	^ self methodVisitor containAssertMessagNode not 
 ]
 
 { #category : 'accessing' }
